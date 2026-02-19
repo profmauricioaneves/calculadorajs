@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Calculadora</title>
+</head>
+
+<body>
+
+    <div class="caixa">
+        <h1>Calculadora</h1>
+        <label>Número 1</label>
+        <input type="number" id="n1" />
+
+        <label>Número 2</label>
+        <input type="number" id="n2" />
+
+        <fieldset>
+            <legend>Tipo de Cálculo</legend>
+            <label>
+                <input type="radio" name="op" value="somar" checked />
+                Somar (+)
+            </label>
+
+            <label>
+                <input type="radio" name="op" value="subtrair" />
+                Subtrair (-)
+            </label>
+
+            <label>
+                <input type="radio" name="op" value="dividir" />
+                Dividir (/)
+            </label>
+        </fieldset>
+
+        <button id="btnCalcular" type="button">Calcular</button>
+        <button id="btnLimpar" type="button">Limpar</button>
+
+        <label>Resultado</label>
+        <input id="saida" type="text" readonly />
+
+        <p id="msg"></p>
+
+
+    </div>
+
+
+
+</body>
+
+</html>
