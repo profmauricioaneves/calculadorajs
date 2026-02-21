@@ -4,7 +4,7 @@ const saidaEl = document.getElementById("saida");
 const msgEl = document.getElementById("msg");
 
 const btnCalcular = document.getElementById("btnCalcular");
-const btnLimpar = documento.getElementById("btnLimpar");
+const btnLimpar = document.getElementById("btnLimpar");
 
 function getOperacao() {
     const opMarcada = document.querySelector('input[name="op"]:checked');
@@ -12,7 +12,7 @@ function getOperacao() {
 }
 
 function lerNumero(inputEl) {
-    if (inputEl.value.trim() === "")
+    if (inputEl.trim() === "")
         return null;
 
     const n = Number(inputEl);
@@ -26,8 +26,8 @@ function lerNumero(inputEl) {
 function calcular() {
     msgEl.textContent = "";
 
-    const a = lerNumero(n1El);
-    const b = lerNumero(n2El);
+    const a = lerNumero(n1El.value);
+    const b = lerNumero(n2El.value);
 
     if (a === null || b === null) {
         saidaEl.value = "";
@@ -36,4 +36,39 @@ function calcular() {
         return;
     }
 
+    const op = getOperacao();
+    let resultado;
+
+    if (op === "somar") {
+        resultado = a + b;
+    } else if (op === "subtrair") {
+        resultado = a - b;
+
+    } else if (op === "dividir") {
+        if (b === 0) {
+            saidaEl.value = "";
+            msgEl.textContent = "Não é possível dividir por zero";
+            return;
+        }
+        resultado = a / b;
+    } else {
+        saidaEl.value = "";
+        msgEl.textContent = "Selecione uma operação";
+        return;
+    }
+    saidaEl.value = resultado;
+    msgEl.textContent = "Cálculo realizado";
 }
+
+function limpar() {
+    n1El.value = "";
+    n2El.value = "";
+    saidaEl.value = "";
+    msgEl.textContent = "";
+
+    document.querySelector('input[name="op"][value="somar"]').checked = true;
+    n1El.focus();
+}
+
+btnCalcular.addEventListener("click", calcular);
+btnLimpar.addEventListener("click", limpar);
